@@ -24,4 +24,4 @@ Basic testing is in place for all implemented methods.  Examples can be found un
     app.listen( 3009 );
 	
 - - -
-<p><small><em>Copyright (c) 2014, rain city software, inc. | Version 0.90.11</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.12</em></small></p>

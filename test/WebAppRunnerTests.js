@@ -6,7 +6,7 @@
  */
 var should = require('chai').should(),
     dash = require('lodash'),
-    log = require('simple-node-logger' ).createLogger(),
+    log = require('simple-node-logger' ).createSimpleLogger(),
     WebAppRunner = require('../lib/WebAppRunner');
 
 describe('WebAppRunner', function() {
