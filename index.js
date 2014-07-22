@@ -1,2 +1,2 @@
 
-module.exports = require('./lib/Excommunicator');
+module.exports = require('./lib/WebAppRunner');

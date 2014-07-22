@@ -1,6 +1,6 @@
 {
   "name": "web-app-runner",
-  "version": "0.9.11",
+  "version": "0.90.11",
   "description": "A simple http app runner that accepts or rejects connections by ip or agent.  The server can be used stand alone or as middleware for connect or express.",
   "main": "./index.js",
   "repository": {
