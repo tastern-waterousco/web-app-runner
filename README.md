@@ -11,19 +11,39 @@ Simple http server plus middleware for banning or re-routing external connection
 
 	npm install web-app-runner --save
 
-## Testing And Examples
+## Use
 
-Basic testing is in place for all implemented methods.  Examples can be found under ./examples.
+### Basic Web Server
 
-# API
+    // by default the server returns public/index.html
+	var runner = require('web-app-runner').createInstance();
 
-## constructor
+    runner.start();
 
-	// create a simple banning server
-    // by default looks for ./index.html or public/index.html
-	var app = require('web-app-runner').createInstance();
+### IP Filter
 
-    app.listen( 3009 );
+The following IP Filter server with accept and reject specific IP addresses.  All unknown IPs are accepted.  This is modified with the __acceptUnknownVisitor__ option parameter set to true.
+
+	var opts = {
+			whiteList:[
+				'127.0.0.1',
+				'173.13.151.170'
+			],
+			blackList:[
+				'173.14.151.180'
+			]
+		},
+		runner = require('web-app-runner').createInstance( opts );
+		
+	runner.start();
+
+## Tests
+
+Tests are in place for all implemented methods. Tests are written in mocha/chai/should and include jshint rules.  To run the tests, do this:
+
+	make test
+	
+
 	
 - - -
 <p><small><em>Copyright © 2014, rain city software | Version 0.90.12</em></small></p>
