@@ -110,4 +110,4 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 ## Examples
 	
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.19</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.20</em></small></p>
