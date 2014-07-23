@@ -22,7 +22,7 @@ Simple http server plus middleware for banning or re-routing external connection
 
 ### IP Filter
 
-The following IP Filter server with accept and reject specific IP addresses.  All unknown IPs are accepted.  This is modified with the __acceptUnknownVisitor__ option parameter set to true.
+The following IP Filter server with accept and reject specific IP addresses.  All unknown IPs are accepted.  This is modified with the __acceptUnknownVisitor__ option parameter set to false.
 
 	var opts = {
 			whiteList:[
@@ -31,7 +31,8 @@ The following IP Filter server with accept and reject specific IP addresses.  Al
 			],
 			blackList:[
 				'173.14.151.180'
-			]
+			],
+			acceptUnkownVisitor:true
 		},
 		runner = require('web-app-runner').createInstance( opts );
 		
@@ -46,4 +47,4 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 
 	
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.12</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.13</em></small></p>

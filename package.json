@@ -1,7 +1,7 @@
 {
   "name": "web-app-runner",
-  "version": "0.90.12",
-  "description": "A simple http app runner that accepts or rejects connections by ip or agent.  The server can be used stand alone or as middleware for connect or express.",
+  "version": "0.90.13",
+  "description": "A simple HTTP application runner that accepts or rejects connections by ip or user agent.  The server can be used stand alone or as middleware for connect or express.",
   "main": "./index.js",
   "repository": {
     "type": "git",
