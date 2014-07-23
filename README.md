@@ -5,13 +5,15 @@ A simple HTTP server targeted for single-page web applications.
 
 ## Overview
 
-Simple http server plus middleware for banning or re-routing external connections by ip or agent. The server can be used stand alone or as middleware for connect or express.
+Simple HTTP server that implements middleware for banning or re-routing authorized connections based on ip, agent or other requiest attributes. The server can be used stand alone or as middleware for connect or express.
 
 ## Installation
 
 	npm install web-app-runner --save
 
 ## Use
+
+There are various levels of authentication that can be applied ranging from completely open to finely filtered.
 
 ### Basic Web Server
 
@@ -47,4 +49,4 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 
 	
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.14</em></small></p>
+<p><small><em>Copyright © 2015, rain city software | Version 0.90.15</em></small></p>
