@@ -7,6 +7,8 @@ A simple HTTP server targeted for single-page web applications.
 
 Simple HTTP server that implements middleware for banning or re-routing authorized connections based on ip, agent or other requiest attributes. The server can be used stand alone or as middleware for connect or express.
 
+_NOTE: this server is designed to deliver simple HTML applications that connect to alternate services.  It has a bit more features when compared with http-server, but isn't intended to be a full REST-type back-end._
+
 ## Installation
 
 	npm install web-app-runner --save
@@ -36,8 +38,13 @@ There are various levels of authentication that can be applied ranging from comp
         	blackListFile:__dirname + '/blacklist.json',
         	runAsDaemon:true,
         	clustered:true
-    	},  
-    	runner = require('web-app-runner').createInstance( opts );
+    	},
+    	connect = require('connect'),  
+    	runner = require('web-app-runner').createInstance( opts ),
+    	app = runner.createApp();
+    
+    // use additional middleware
+    app.use( connect.favicon() );
     
 	runner.start();
 
