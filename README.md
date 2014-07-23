@@ -26,7 +26,8 @@ There are various levels of authentication that can be applied ranging from comp
     
 ### Production Web Server
 
-	var configFile = __dirname + '/config.json',
+	// IP & agent white/black lists defined in config
+	var configFile = __dirname + '/config.js',
     	logfile = process.env.HOME + '/logs/web-app.log',
     	log = require('simple-node-logger').createRollingFileLogger( logfile ),
     	opts = { 
@@ -34,8 +35,6 @@ There are various levels of authentication that can be applied ranging from comp
         	env:'production',
         	port:18004,
         	home:'./',
-        	whiteListFile:__dirname + '/whitelist.json',
-        	blackListFile:__dirname + '/blacklist.json',
         	runAsDaemon:true,
         	clustered:true
     	},
@@ -60,11 +59,12 @@ The process first checks the white list, then the black list.
 	var opts = {
 			ip:{
 				whiteList:[
-					'127.0.0.1',
-					'173.13.151.[1-127]'
+					/^127\.0\.0\.1/,
+					/^173\.13\.151\.1/
 				],
 				blackList:[
-					'193.144.151.180'
+					/^193\.144\.151\.1/,
+					/^193\.144\.151\.2/
 				],
 				acceptUnkownVisitor:true
 			}
@@ -73,7 +73,7 @@ The process first checks the white list, then the black list.
 		
 	runner.start();
 	
-Or better yet, define the white and black lists in files and set the refresh rate.  This way, the lists are refreshed when the lists change.
+Or better yet, define the white and black lists in the config file and set the refresh rate.  This way, the lists are refreshed when they change.
 
 ### Agent Filter
 
@@ -82,16 +82,16 @@ Agent filters work on lists of regular expressions.  The process first checks th
 	var opts = {
 			agent:{
 				whiteList:[
-					'chrome/[23][0-9]',
-					'msie 1[0-1]',
-					'safari/[7-8]',
-					'safari/534'
+					/chrome/[23][0-9]/,
+					/msie 1[0-1]/,
+					/safari/[7-8]/,
+					/safari/534/
 				],
 				blackList:[
-					'msie [2-9]',
-					'safari/[2-5]
-					'chrome/2[0-6]'
-					'chrome/1[0-9]'
+					/msie [2-9]/,
+					/safari/[2-5]/
+					/chrome/2[0-6]/
+					/chrome/1[0-9]/
 				],
 				acceptUnkownAgent:true,
 				rejectURL:'/browser-not-supported.html'
@@ -110,4 +110,4 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 ## Examples
 	
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.18</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.19</em></small></p>
