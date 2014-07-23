@@ -27,18 +27,22 @@ There are various levels of authentication that can be applied ranging from comp
 The following IP Filter server with accept and reject specific IP addresses.  All unknown IPs are accepted.  This is modified with the __acceptUnknownVisitor__ option parameter set to false.
 
 	var opts = {
-			whiteList:[
-				'127.0.0.1',
-				'173.13.151.170'
-			],
-			blackList:[
-				'173.14.151.180'
-			],
-			acceptUnkownVisitor:true
+			ip:{
+				whiteList:[
+					'127.0.0.1',
+					'173.13.151.170'
+				],
+				blackList:[
+					'173.14.151.180'
+				],
+				acceptUnkownVisitor:true
+			}
 		},
 		runner = require('web-app-runner').createInstance( opts );
 		
 	runner.start();
+	
+Or better yet, define the white and black lists in files and set the refresh rate.  This way, the lists are refreshed when the lists change.
 
 ## Tests
 
@@ -49,4 +53,4 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 
 	
 - - -
-<p><small><em>Copyright © 2015, rain city software | Version 0.90.15</em></small></p>
+<p><small><em>Copyright © 2015, rain city software | Version 0.90.16</em></small></p>
