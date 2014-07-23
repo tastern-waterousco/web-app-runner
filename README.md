@@ -1,5 +1,7 @@
-excommunicator
-==============
+# Web App Runner
+- - -
+
+A simple HTTP server targeted for single-page web applications.
 
 ## Overview
 
@@ -7,7 +9,7 @@ Simple http server plus middleware for banning or re-routing external connection
 
 ## Installation
 
-	npm install excommunicator --save
+	npm install web-app-runner --save
 
 ## Testing And Examples
 
@@ -19,7 +21,7 @@ Basic testing is in place for all implemented methods.  Examples can be found un
 
 	// create a simple banning server
     // by default looks for ./index.html or public/index.html
-	var app = require('excommunicator').createInstance();
+	var app = require('web-app-runner').createInstance();
 
     app.listen( 3009 );
 	

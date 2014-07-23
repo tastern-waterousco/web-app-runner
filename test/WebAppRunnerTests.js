@@ -26,13 +26,7 @@ describe('WebAppRunner', function() {
             methods = [
                 'start',
                 'createApp',
-                'authorize',
-                'isWhiteList',
-                'isBlackList',
-                'reject',
-                'getRemoteAddress',
                 'logger',
-                'createVisitor',
                 'landingPageRouter'
             ];
 
