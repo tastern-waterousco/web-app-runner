@@ -1,16 +1,18 @@
 #!/usr/bin/env node
 
-var opts = { 
+var opts = {
         port:3001,
-        whiteList:[
-            '10.1.10.10'
-        ],
-        blackList:[
-            '127.9.9.9',
-            '10.1.10.144'
-        ],
-        acceptUnknownVisitor:true
-    }, 
+        ip:{
+            whiteList:[
+                '10.1.10.10'
+            ],
+            blackList:[
+                '127.9.9.9',
+                '10.1.10.144'
+            ],
+            acceptUnknownVisitor:true
+        }
+    },
     runner = require( '../lib/WebAppRunner' ).createInstance( opts );
 
 runner.start();
