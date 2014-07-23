@@ -8,7 +8,8 @@ var opts = {
         blackList:[
             '127.9.9.9',
             '10.1.10.144'
-        ]
+        ],
+        acceptUnknownVisitor:true
     }, 
     runner = require( '../lib/WebAppRunner' ).createInstance( opts );
 
