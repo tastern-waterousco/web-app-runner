@@ -13,7 +13,7 @@ Simple HTTP server that implements middleware for banning or re-routing authoriz
 
 ## Use
 
-There are various levels of authentication that can be applied ranging from completely open to finely filtered.
+There are various levels of authentication that can be applied ranging from completely open to finely filtered.  The very basic server can be launched in a few lines of code while more robust applications include loggers, white/black list files, configuration files, etc. 
 
 ### Basic Web Server
 
@@ -21,19 +21,42 @@ There are various levels of authentication that can be applied ranging from comp
 	var runner = require('web-app-runner').createInstance();
 
     runner.start();
+    
+### Production Web Server
+
+	var configFile = __dirname + '/config.json',
+    	logfile = process.env.HOME + '/logs/web-app.log',
+    	log = require('simple-node-logger').createRollingFileLogger( logfile ),
+    	opts = { 
+        	log:log,
+        	env:'production',
+        	port:18004,
+        	home:'./',
+        	whiteListFile:__dirname + '/whitelist.json',
+        	blackListFile:__dirname + '/blacklist.json',
+        	runAsDaemon:true,
+        	clustered:true
+    	},  
+    	runner = require('web-app-runner').createInstance( opts );
+    
+	runner.start();
 
 ### IP Filter
 
 The following IP Filter server with accept and reject specific IP addresses.  All unknown IPs are accepted.  This is modified with the __acceptUnknownVisitor__ option parameter set to false.
 
+IP filters work on lists of regular expressions for accepting and rejecting specific addresses or address ranges.  The process first checks the white list and allows access if there is a match.  If the white list is not matched, then the black list is checked.  When a black list match is detected the user is sent to the specified reject URL.
+
+The process first checks the white list, then the black list.
+
 	var opts = {
 			ip:{
 				whiteList:[
 					'127.0.0.1',
-					'173.13.151.170'
+					'173.13.151.[1-127]'
 				],
 				blackList:[
-					'173.14.151.180'
+					'193.144.151.180'
 				],
 				acceptUnkownVisitor:true
 			}
@@ -43,6 +66,32 @@ The following IP Filter server with accept and reject specific IP addresses.  Al
 	runner.start();
 	
 Or better yet, define the white and black lists in files and set the refresh rate.  This way, the lists are refreshed when the lists change.
+
+### Agent Filter
+
+Agent filters work on lists of regular expressions.  The process first checks the white list and allows access if there is a match.  If the white list is not matched, then the black list is checked.  When a black list match is detected the user is sent to the specified reject URL.  
+
+	var opts = {
+			agent:{
+				whiteList:[
+					'chrome/[23][0-9]',
+					'msie 1[0-1]',
+					'safari/[7-8]',
+					'safari/534'
+				],
+				blackList:[
+					'msie [2-9]',
+					'safari/[2-5]
+					'chrome/2[0-6]'
+					'chrome/1[0-9]'
+				],
+				acceptUnkownAgent:true,
+				rejectURL:'/browser-not-supported.html'
+			}
+		},
+		runner = require('web-app-runner').createInstance( opts );
+		
+	runner.start();
 
 ## Tests
 
