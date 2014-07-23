@@ -99,7 +99,7 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 
 	make test
 	
-
+## Examples
 	
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.17</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.18</em></small></p>
