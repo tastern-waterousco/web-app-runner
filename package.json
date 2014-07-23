@@ -14,10 +14,10 @@
     "connections"
   ],
   "dependencies": {
-    "commander": "^2.2.0",
-    "connect": "^2.21.1",
+    "connect": "^3.1.0",
     "lodash": "~2.4.1",
     "node-uuid": "~1.4.1",
+    "serve-static": "^1.4.0",
     "simple-node-logger": "^0.91.80"
   },
   "devDependencies": {

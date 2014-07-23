@@ -39,12 +39,13 @@ There are various levels of authentication that can be applied ranging from comp
         	runAsDaemon:true,
         	clustered:true
     	},
+    	favicon = require('serve-favicon'),
     	connect = require('connect'),  
     	runner = require('web-app-runner').createInstance( opts ),
     	app = runner.createApp();
     
     // use additional middleware
-    app.use( connect.favicon() );
+    app.use( favicon( home + /favicon.png ) );
     
 	runner.start();
 
