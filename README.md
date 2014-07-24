@@ -34,7 +34,7 @@ There are various levels of authentication that can be applied ranging from comp
         	log:log,
         	env:'production',
         	port:18004,
-        	home:'./',
+        	home:'./public',
         	runAsDaemon:true,
         	clustered:true
     	},
