@@ -4,11 +4,13 @@
 
 'use strict';
 
+var Logger = require('simple-node-logger' );
+
 module.exports.readConfig = function() {
     var config = {
         env:'staging',
         port:3005,
-        logfile: process.env.HOME + '/logs/app-start.log',
+        log: Logger.createSimpleFileLogger( process.env.HOME + '/logs/staging-3005.log'),
         daemon:true
     };
 

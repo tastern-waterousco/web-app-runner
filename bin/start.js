@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-var opts = {
-    configFile: __dirname + '/conf.js'
-};
+var conf = require( __dirname + '/conf' );
 
-require('../lib/WebAppRunner').createInstance( opts );
-
+require('../lib/WebAppRunner').createInstance( { configFile:conf } );
