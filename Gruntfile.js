@@ -13,12 +13,14 @@ module.exports = function(grunt) {
     grunt.initConfig({
         dirs: {
             lib:'lib',
+            bin:'bin',
             test: 'test'
         },
         watch:{
             scripts:{
                 files:[
                     '<%= dirs.lib %>/*.js',
+                    '<%= dirs.bin %>/*.js',
                     '<%= dirs.test %>/*.js',
                     '<%= dirs.test %>/*/*.js'
                 ],
@@ -40,6 +42,7 @@ module.exports = function(grunt) {
             all: [
                 'Gruntfile.js',
                 '<%= dirs.lib %>/*.js',
+                '<%= dirs.bin %>/*.js',
                 '<%= dirs.test %>/*.js',
                 '<%= dirs.test %>/*/*.js'
             ]

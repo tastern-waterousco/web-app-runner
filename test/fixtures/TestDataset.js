@@ -42,8 +42,8 @@ var TestDataset = function() {
     this.createIPOptions = function() {
         var ip = {};
 
-        ip.whiteList = dataset.getIPWhiteList();
-        ip.blackList = dataset.getIPBlackList();
+        ip.accept = dataset.getIPWhiteList();
+        ip.reject = dataset.getIPBlackList();
 
         return ip;
     };

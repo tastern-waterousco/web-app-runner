@@ -60,11 +60,11 @@ The process first checks the white list, then the black list.
 
 	var opts = {
 			ip:{
-				whiteList:[
+				accept:[
 					/^127\.0\.0\.1/,
 					/^173\.13\.151\.1/
 				],
-				blackList:[
+				reject:[
 					/^193\.144\.151\.1/,
 					/^193\.144\.151\.2/
 				],
@@ -83,13 +83,13 @@ Agent filters work on lists of regular expressions.  The process first checks th
 
 	var opts = {
 			agent:{
-				whiteList:[
+				accept:[
 					/chrome/[23][0-9]/,
 					/msie 1[0-1]/,
 					/safari/[7-8]/,
 					/safari/534/
 				],
-				blackList:[
+				reject:[
 					/msie [2-9]/,
 					/safari/[2-5]/
 					/chrome/2[0-6]/
@@ -112,4 +112,4 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 ## Examples
 	
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.21</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.22</em></small></p>
