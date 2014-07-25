@@ -17,12 +17,28 @@ _NOTE: this server is designed to deliver simple HTML applications that connect 
 
 There are various levels of authentication that can be applied ranging from completely open to finely filtered.  The very basic server can be launched in a few lines of code while more robust applications include loggers, accept/reject list files, configuration files, etc. 
 
-### Basic Web Server
+### Minimal Web Server
+
+A minimal server running on port 3000 from a root public folder that has index.html:
 
     // by default the server returns public/index.html
-	var runner = require('web-app-runner').createInstance();
+	require('web-app-runner').createInstance().start();
 
-    runner.start();
+### Basic Server
+
+Adding options and middleware gives you a bit more flexibility:
+
+	var opts = {},
+		runner;
+	
+	opts.port = 3002;
+	opts.env = 'staging';
+	opts.home = './';
+	
+	runner = require('web-app-runner').createInstance( opts );
+	runner.createApp().use( someMiddleWare() );
+	
+	runner.start();
     
 ### Production Web Server
 
