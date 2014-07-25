@@ -26,6 +26,8 @@ There are various levels of authentication that can be applied ranging from comp
     
 ### Production Web Server
 
+This example shows a more realistic environment where the environment is set to production, configuration is read from a file and the server runs as a cluster of services in a background daemon.
+
 	// IP & agent white/black lists defined in config
 	var configFile = __dirname + '/config.js',
     	logfile = process.env.HOME + '/logs/web-app.log',
@@ -35,7 +37,7 @@ There are various levels of authentication that can be applied ranging from comp
         	env:'production',
         	port:18004,
         	home:'./public',
-        	runAsDaemon:true,
+        	daemon:true,
         	clustered:true
     	},
     	favicon = require('serve-favicon'),
@@ -110,4 +112,4 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 ## Examples
 	
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.20</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.21</em></small></p>
