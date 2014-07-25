@@ -27,12 +27,14 @@ describe('WebAppRunner', function() {
                 'start',
                 'createApp',
                 'logger',
-                'landingPageRouter'
+                'landingPageRouter',
+                '__protected'
             ];
 
         it('should be an instance of WebAppRunner', function() {
             should.exist( server );
             server.should.be.instanceof( WebAppRunner );
+            server.__protected().runInstance.should.be.a('function');
         });
 
         it('should have all known methods by size and type', function() {
@@ -42,5 +44,25 @@ describe('WebAppRunner', function() {
                 server[ method ].should.be.a('function');
             });
         });
+    });
+
+    describe('#runInstance', function() {
+        it('should create a child instance and write the pid to process file');
+    });
+
+    describe('landingPageRouter', function() {
+        it('should read the index page and write to mock response');
+    });
+
+    describe('logger', function() {
+        it('should log visitors to a mock logger middleware object');
+    });
+
+    describe('createApp', function() {
+        it('should create a connect app with middleware');
+    });
+
+    describe('start', function() {
+        it('should create a mock app and start a mock server');
     });
 });

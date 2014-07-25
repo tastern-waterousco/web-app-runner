@@ -12,6 +12,8 @@
 
 ## Documentation
 
+* implement more robust tests for start, createApp, landingPageRouter
+* implement run instance tests against mock service runner
 * better examples including a multi-server implementation
 
 - - -
