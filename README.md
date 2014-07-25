@@ -87,6 +87,37 @@ The advantage to this approach is that running a server is a one-liner.  So, to 
 	
 Each server has its own process id and can be started/stopped independent of the other servers.
 
+The configuration file, conf.js should implement 'readConfig' and 'readFilters'.  It might look something like this:
+
+	var Logger = require('simple-node-logger' );
+
+	module.exports.readConfig = function() {
+    	var config = {
+        	env:'staging',
+        	port:3005,
+        	log: Logger.createSimpleFileLogger( process.env.HOME + '/logs/staging-3005.log'),
+        	daemon:true
+    	};
+
+    	return config;
+	};
+
+	module.exports.readFilters = function() {
+    	var filters = {};
+
+    	filters.ip = {
+        	accept:[ ],
+        	reject:[ ]
+    	};
+
+    	filters.agent = {
+        	accept:[ ],
+        	reject:[ ]
+    	};
+
+    	return filters;
+	};
+
 ### IP Filter
 
 The following IP Filter server with accept and reject specific IP addresses.  All unknown IPs are accepted.  This is modified with the __acceptUnknownVisitor__ option parameter set to false.
@@ -165,4 +196,4 @@ There are a number of simple and not so simple examples in the examples folder t
 There is also a more realistic production runner in the bin folder called bin/start.js that includes a conf.js file.
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.24</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.25</em></small></p>
