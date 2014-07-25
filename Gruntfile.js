@@ -14,6 +14,7 @@ module.exports = function(grunt) {
         dirs: {
             lib:'lib',
             bin:'bin',
+            ex:'examples',
             test: 'test'
         },
         watch:{
@@ -21,6 +22,7 @@ module.exports = function(grunt) {
                 files:[
                     '<%= dirs.lib %>/*.js',
                     '<%= dirs.bin %>/*.js',
+                    '<%= dirs.ex %>/*.js',
                     '<%= dirs.test %>/*.js',
                     '<%= dirs.test %>/*/*.js'
                 ],
@@ -43,6 +45,7 @@ module.exports = function(grunt) {
                 'Gruntfile.js',
                 '<%= dirs.lib %>/*.js',
                 '<%= dirs.bin %>/*.js',
+                '<%= dirs.ex %>/*.js',
                 '<%= dirs.test %>/*.js',
                 '<%= dirs.test %>/*/*.js'
             ]

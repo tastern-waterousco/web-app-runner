@@ -5,6 +5,7 @@ var dash = require( 'lodash' ),
     childKey = '--run-child-service',
     args = dash.toArray( process.argv ),
     runner,
+    child,
     command,
     opts = {
         port:3002,
