@@ -79,10 +79,10 @@ This example separates configuration into a re-readable configuration file.
 The advantage to this approach is that running a server is a one-liner.  So, to run two or three servers is as easy as this:
 
 	var conf = __dirname + '/conf.js',
-		keys = [ 1, 2, 3 ];
+		ports = [ 3001, 3002, 3003 ];
 	
-	keys.forEach(function(key) {
-		require('web-app-runner').createInstance( { configFile:conf, serverKey:key } );
+	keys.forEach(function(port) {
+		require('web-app-runner').createInstance( { configFile:conf, port:port } );
 	});
 	
 Each server has its own process id and can be started/stopped independent of the other servers.
