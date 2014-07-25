@@ -26,7 +26,9 @@ There are various levels of authentication that can be applied ranging from comp
     
 ### Production Web Server
 
-This example shows a more realistic environment where the environment is set to production, configuration is read from a file and the server runs as a cluster of services in a background daemon.
+#### Static Configuration Example
+
+This example shows a more realistic environment where the environment is set to production, configuration is set int the run script and the server runs in a background daemon.
 
 	// IP & agent accept/reject lists defined in config
 	var configFile = __dirname + '/config.js',
@@ -49,6 +51,25 @@ This example shows a more realistic environment where the environment is set to 
     app.use( favicon( home + /favicon.png ) );
     
 	runner.start();
+
+The advantage to this approach is that it exposes the connect 'app', allowing you to use additional middleware.  The disadvantage is that the script is static, so can't be re-read while the service is running.
+
+#### Dynamic Configuration Example
+
+This example separates configuration into a re-readable configuration file.
+
+	require('web-app-runner').createInstance( { configFile: __dirname + '/conf.js' } );
+	
+The advantage to this approach is that running a server is a one-liner.  So, to run two or three servers is as easy as this:
+
+	var conf = __dirname + '/conf.js',
+		keys = [ 1, 2, 3 ];
+	
+	keys.forEach(function(key) {
+		require('web-app-runner').createInstance( { configFile:conf, serverKey:key } );
+	});
+	
+Each server has its own process id and can be started/stopped independent of the other servers.
 
 ### IP Filter
 
@@ -109,7 +130,23 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 
 	make test
 	
-## Examples
+	// or 
 	
+	make watch
+	
+	// or
+	
+	make jshint
+	
+## Examples
+
+There are a number of simple and not so simple examples in the examples folder that demonstrate how to run in development and production mode.  The examples include:
+
+* basic-server.js
+* ipfilter-server.js
+* daemon-server.js
+
+There is also a more realistic production runner in the bin folder called bin/start.js that includes a conf.js file.
+
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.23</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.24</em></small></p>
