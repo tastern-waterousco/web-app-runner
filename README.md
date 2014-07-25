@@ -196,4 +196,4 @@ There are a number of simple and not so simple examples in the examples folder t
 There is also a more realistic production runner in the bin folder called bin/start.js that includes a conf.js file.
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.25</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.26</em></small></p>
