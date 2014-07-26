@@ -55,6 +55,15 @@ describe('WebAppRunner', function() {
         it('should create a child instance and write the pid to process file');
     });
 
+    describe('shutdown', function() {
+        it('should reject a shutdown request from non-local host ip');
+        it('should issue a shutdown and stop from a local host ip');
+    });
+
+    describe('stop', function() {
+        it('should close an open connection');
+    });
+
     describe('landingPageRouter', function() {
         it('should read the index page and write to mock response');
     });

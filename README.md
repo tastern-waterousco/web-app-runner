@@ -23,6 +23,8 @@ A minimal server running on port 3000 from a root public folder that has index.h
 
     // by default the server returns public/index.html
 	require('web-app-runner').createInstance().start();
+	
+It's easy to stop this server--just hit ctrl-c.
 
 ### Basic Server
 
@@ -38,7 +40,7 @@ Adding options and middleware gives you a bit more flexibility:
 	runner = require('web-app-runner').createInstance( opts );
 	runner.createApp().use( someMiddleWare() );
 	
-	runner.start();
+	runner.start();	
     
 ### Production Web Server
 
@@ -69,6 +71,12 @@ This example shows a more realistic environment where the environment is set to 
 	runner.start();
 
 The advantage to this approach is that it exposes the connect 'app', allowing you to use additional middleware.  The disadvantage is that the script is static, so can't be re-read while the service is running.
+
+You can stop this server from the local host by doing this:
+
+	curl -d token=<appkey> http://127.0.0.1:<port>/shutdown
+	
+Where appkey is defined in options and the port is the current listening port.  Alternatively, you can find the PID by looking in the logs and send a kill signal (-2 or -9).
 
 #### Dynamic Configuration Example
 
@@ -196,4 +204,4 @@ There are a number of simple and not so simple examples in the examples folder t
 There is also a more realistic production runner in the bin folder called bin/start.js that includes a conf.js file.
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.27</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.28</em></small></p>
