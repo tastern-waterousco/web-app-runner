@@ -11,7 +11,7 @@ var TestDataset = function() {
 
     var dataset = this;
 
-    this.getAuthorizedVisitor = function() {
+    this.createRequest = function() {
         var request = {
                 url:'http://myhome.com',
                 ip:'173.13.151.122',
@@ -19,8 +19,13 @@ var TestDataset = function() {
                 headers:{
                     'user-agent':'chrome/34'
                 }
-            },
-            visitor = new Visitor( request );
+            };
+
+        return request;
+    };
+
+    this.getAuthorizedVisitor = function() {
+        var visitor = new Visitor( dataset.createRequest() );
 
         return visitor;
     };

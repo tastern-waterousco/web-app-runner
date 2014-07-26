@@ -10,12 +10,15 @@ var should = require('chai').should(),
     IPFilter = require('../lib/IPFilter' ),
     Visitor = require('../lib/Visitor' ),
     WebAppRunner = require('../lib/WebAppRunner' ),
-    MockChild = require( 'background-service-runner' ).mocks.MockChild;
+    MockChild = require( 'background-service-runner' ).mocks.MockChild,
+    Dataset = require('./fixtures/TestDataset');
 
 describe('WebAppRunner', function() {
     'use strict';
 
     log.setLevel('fatal');
+
+    var dataset = new Dataset();
 
     var MockServiceRunner = function() {
         var runner = {};
@@ -56,6 +59,43 @@ describe('WebAppRunner', function() {
             conn.closed = false;
 
             return conn;
+        };
+    };
+
+    var MockRequest = function(params) {
+        var req = this;
+
+        if (!params) {
+            params = dataset.getAuthorizedVisitor();
+        }
+
+        this.method = params.method;
+        this.url = params.url;
+        this.connection = {};
+        this.connection.remoteAddress = params.ip;
+
+    };
+
+    var MockResponse = function() {
+        var resp = this,
+            headers,
+            output;
+
+        this.writeHead = function(code, params) {
+            headers = params;
+        };
+
+        this.end = function(text, cb) {
+            output = text;
+            cb();
+        };
+
+        this.getOutput = function() {
+            return output;
+        };
+
+        this.getHeaders = function() {
+            return headers;
         };
     };
 
@@ -112,9 +152,22 @@ describe('WebAppRunner', function() {
     });
 
     describe('shutdown', function() {
+        var server = new WebAppRunner( createOptions() );
 
+        it('should reject a shutdown request from non-local host ip', function(done) {
+            var callback,
+                request = new MockRequest(),
+                response = new MockResponse();
 
-        it('should reject a shutdown request from non-local host ip');
+            callback = function(err) {
+                should.not.exist( err );
+
+                done();
+            };
+
+            server.shutdown( request, response, callback );
+        });
+
         it('should issue a shutdown and stop from a local host ip');
     });
 
