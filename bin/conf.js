@@ -1,5 +1,6 @@
 /**
- * a sample external configuration file with read functions to enable non-cached requires...
+ * A sample external configuration file with read functions to enable non-cached requires. As an
+ * executable this offers much more flexibility than a standard json file.
  */
 
 'use strict';
@@ -10,9 +11,11 @@ module.exports.readConfig = function() {
     var config = {
         env:'staging',
         port:3005,
-        log: Logger.createSimpleFileLogger( process.env.HOME + '/logs/staging-3005.log'),
         daemon:true
     };
+
+    var file = [ process.env.HOME, '/logs/staging-', config.port, '.log' ].join('');
+    config.log = Logger.createSimpleFileLogger( file );
 
     return config;
 };
