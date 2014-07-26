@@ -156,8 +156,11 @@ describe('WebAppRunner', function() {
 
         it('should reject a shutdown request from non-local host ip', function(done) {
             var callback,
-                request = new MockRequest(),
-                response = new MockResponse();
+                visitor = dataset.getAuthorizedVisitor(),
+                request = new MockRequest();
+
+            request.visitor = visitor;
+            request.url = visitor.url = '/shutdown';
 
             callback = function(err) {
                 should.not.exist( err );
@@ -165,10 +168,34 @@ describe('WebAppRunner', function() {
                 done();
             };
 
-            server.shutdown( request, response, callback );
+            server.shutdown( request, {}, callback );
         });
 
-        it('should issue a shutdown and stop from a local host ip');
+        it('should issue a shutdown and stop from a local host ip', function(done) {
+            var visitor = dataset.getAuthorizedVisitor(),
+                request,
+                response = new MockResponse();
+
+            visitor.url = '/shutdown';
+
+            response.end = function(text, callback) {
+                should.exist( text );
+                should.exist( callback );
+
+                callback.should.be.a( 'function' );
+
+                done();
+            };
+
+            visitor.ip = '127.0.0.1';
+            visitor.url = '/shutdown';
+            visitor.method = 'POST';
+            request = new MockRequest( visitor );
+            request.visitor = visitor;
+
+            server.shutdown( request, response, null );
+
+        });
     });
 
     describe('stop', function() {
