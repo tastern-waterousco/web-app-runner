@@ -9,9 +9,9 @@ var Logger = require('simple-node-logger' );
 
 module.exports.readConfig = function() {
     var config = {
+        appkey:'',
         env:'staging',
         port:3005,
-        piddir: __dirname,
         daemon:true
     };
 
