@@ -12,11 +12,14 @@ var should = require('chai').should(),
 describe('WebAppRunner', function() {
     'use strict';
 
+    log.setLevel('fatal');
+
     var createOptions = function() {
         var opts = {};
 
         opts.log = log;
-        opts.port = 9999;
+        opts.port = dash.random( 1000, 20000 );
+        opts.piddir = '/tmp';
 
         return opts;
     };
@@ -28,6 +31,8 @@ describe('WebAppRunner', function() {
                 'createApp',
                 'logger',
                 'landingPageRouter',
+                'createProcessPIDFile',
+                'shutdown',
                 '__protected'
             ];
 
@@ -43,6 +48,20 @@ describe('WebAppRunner', function() {
             methods.forEach(function(method) {
                 server[ method ].should.be.a('function');
             });
+        });
+    });
+
+    describe('createProcessPIDFile', function() {
+        var server = new WebAppRunner( createOptions() ),
+            port = server.__protected().port;
+
+        it('should create a filename port', function() {
+            var fn = server.createProcessPIDFile();
+            should.exist( fn );
+
+            console.log( fn );
+
+            fn.should.equal( [ '/tmp/process-', port, '.pid' ].join('') );
         });
     });
 

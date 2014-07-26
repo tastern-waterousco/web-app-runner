@@ -11,6 +11,7 @@ module.exports.readConfig = function() {
     var config = {
         env:'staging',
         port:3005,
+        piddir: __dirname,
         daemon:true
     };
 

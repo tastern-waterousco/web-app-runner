@@ -3,7 +3,9 @@
 
 ## General
 
-* complete daemon runner by writing pid to process-port.pid file in the bin folder
+* add visitor middleware to pull ip, url, method, agent, etc
+* add shutdown hook: http://127.0.0.1:port/shutdown?token=appkey
+* add a process status hook: /status?token=appkey
 * implement stop.js by reading the process-port.pid file(s) and sending a kill message
 * implement dynamic filter read capability
 * add status.js to read the process pid and report status?
