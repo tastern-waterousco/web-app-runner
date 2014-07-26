@@ -7,19 +7,33 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     log = require('simple-node-logger' ).createSimpleLogger(),
-    WebAppRunner = require('../lib/WebAppRunner');
+    WebAppRunner = require('../lib/WebAppRunner' ),
+    MockChild = require( 'background-service-runner' ).mocks.MockChild;
 
 describe('WebAppRunner', function() {
     'use strict';
 
     log.setLevel('fatal');
 
+    var MockServiceRunner = function() {
+        var runner = {};
+        runner.start = function(command, args) {
+            runner.command = command;
+            runner.args = args;
+
+            return new MockChild();
+        };
+
+        this.createDaemonRunner = function() {
+            return runner;
+        };
+    };
+
     var createOptions = function() {
         var opts = {};
 
         opts.log = log;
         opts.port = dash.random( 1000, 20000 );
-        opts.piddir = '/tmp';
 
         return opts;
     };
@@ -52,7 +66,18 @@ describe('WebAppRunner', function() {
     });
 
     describe('#runInstance', function() {
-        it('should create a child instance and write the pid to process file');
+        var server,
+            opts = createOptions();
+
+        opts.serviceRunner = new MockServiceRunner();
+        server = new WebAppRunner( opts );
+
+        it('should create a child instance and write the pid to process file', function() {
+            var child = server.__protected().runInstance();
+
+            should.exist( child );
+            child.pid.should.be.above( 1000 );
+        });
     });
 
     describe('shutdown', function() {
@@ -61,7 +86,23 @@ describe('WebAppRunner', function() {
     });
 
     describe('stop', function() {
-        it('should close an open connection');
+        var server,
+            opts = createOptions();
+
+        opts.connection = {
+            closed:false,
+            close:function() {
+                this.closed = true;
+            }
+        };
+
+        server = new WebAppRunner( opts );
+
+        it('should close an open connection', function() {
+            server.stop();
+
+            opts.connection.closed.should.equal( true );
+        });
     });
 
     describe('landingPageRouter', function() {
