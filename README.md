@@ -80,8 +80,6 @@ Where appkey is defined in options and the port is the current listening port.  
 
 	./bin/stop.js
 	
-
-
 #### Dynamic Configuration Example
 
 This example separates configuration into a re-readable configuration file.
@@ -101,14 +99,14 @@ Each server has its own process id and can be started/stopped independent of the
 
 The configuration file, conf.js should implement 'readConfig' and 'readFilters'.  It might look something like this:
 
-	var Logger = require('simple-node-logger' );
 
 	module.exports.readConfig = function() {
     	var config = {
         	env:'staging',
         	port:3005,
-        	log: Logger.createSimpleFileLogger( process.env.HOME + '/logs/staging-3005.log'),
-        	daemon:true
+        	daemon:true,
+        	logFile:process.env.HOME + '/logs/staging-3005.log',
+        	logLevel:'warn'
     	};
 
     	return config;
@@ -201,11 +199,13 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 
 There are a number of simple and not so simple examples in the examples folder that demonstrate how to run in development and production mode.  The examples include:
 
-* basic-server.js
-* ipfilter-server.js
-* daemon-server.js
+* minimal-server.js - just the bare minimum to run a development server
+* basic-server.js - a bit more control over a specific envirnment
+* ipfilter-server.js - demonstrates ip filtering
+* daemon-server.js - a background server done the hard way (see bin/start.js for the easy way)
+* start-page.js - a pre-loaded start page with redirect 
 
-There is also a more realistic production runner in the bin folder called bin/start.js that includes a conf.js file.
+There is also a more realistic production runner in the bin folder called bin/start.js that includes conf.js and stop.js scripts.
 
 - - -
 <p><small><em>Copyright © 2014, rain city software | Version 0.90.32</em></small></p>
