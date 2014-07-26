@@ -7,6 +7,8 @@
 var should = require('chai').should(),
     dash = require('lodash'),
     log = require('simple-node-logger' ).createSimpleLogger(),
+    IPFilter = require('../lib/IPFilter' ),
+    Visitor = require('../lib/Visitor' ),
     WebAppRunner = require('../lib/WebAppRunner' ),
     MockChild = require( 'background-service-runner' ).mocks.MockChild;
 
@@ -58,6 +60,7 @@ describe('WebAppRunner', function() {
 
         opts.log = log;
         opts.port = dash.random( 1000, 20000 );
+        opts.ipfilter = new IPFilter( opts );
 
         return opts;
     };
@@ -105,6 +108,8 @@ describe('WebAppRunner', function() {
     });
 
     describe('shutdown', function() {
+
+
         it('should reject a shutdown request from non-local host ip');
         it('should issue a shutdown and stop from a local host ip');
     });
@@ -134,10 +139,23 @@ describe('WebAppRunner', function() {
     });
 
     describe('createApp', function() {
-        it('should create a connect app with middleware');
+        var server = new WebAppRunner( createOptions() );
+
+        it('should create a connect app with middleware', function() {
+            var app = server.createApp();
+            should.exist( app );
+            // console.log( app );
+
+            app.stack.length.should.be.above( 4 );
+        });
     });
 
     describe('start', function() {
+        var server,
+            opts = createOptions();
+
+        opts.app = new MockConnect();
+
         it('should create a mock app and start a mock server');
     });
 });
