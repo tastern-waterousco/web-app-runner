@@ -76,7 +76,11 @@ You can stop this server from the local host by doing this:
 
 	curl -d token=<appkey> http://127.0.0.1:<port>/shutdown
 	
-Where appkey is defined in options and the port is the current listening port.  Alternatively, you can find the PID by looking in the logs and send a kill signal (-2 or -9).
+Where appkey is defined in options and the port is the current listening port.  Alternatively, you can find the PID by looking in the logs and send a kill signal (-2 or -9).  There is also a convenient script in the bin folder that will stop a service, daemon or not as long as it's run from the origin server like this:
+
+	./bin/stop.js
+	
+
 
 #### Dynamic Configuration Example
 
@@ -204,4 +208,4 @@ There are a number of simple and not so simple examples in the examples folder t
 There is also a more realistic production runner in the bin folder called bin/start.js that includes a conf.js file.
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.28</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.29</em></small></p>
