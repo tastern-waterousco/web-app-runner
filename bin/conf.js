@@ -9,7 +9,7 @@ var Logger = require('simple-node-logger' );
 
 module.exports.readConfig = function() {
     var config = {
-        appkey:'',
+        appkey:'d551900c-146a-11e4-aaa3-df58755e84a9',
         env:'staging',
         port:3005,
         daemon:true

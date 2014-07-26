@@ -32,6 +32,7 @@ describe('WebAppRunner', function() {
                 'logger',
                 'landingPageRouter',
                 'shutdown',
+                'stop',
                 '__protected'
             ];
 
