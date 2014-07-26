@@ -29,6 +29,30 @@ describe('WebAppRunner', function() {
         };
     };
 
+    var MockConnection = function() {
+        var con = this;
+
+        this.closed = true;
+
+        this.close = function(cb) {
+            con.closed = true;
+
+            if (cb) {
+                cb();
+            }
+        };
+    };
+
+    var MockConnect = function() {
+        this.use = function() {
+
+        };
+
+        this.listen = function(port) {
+            return new MockConnection();
+        };
+    };
+
     var createOptions = function() {
         var opts = {};
 
@@ -89,12 +113,8 @@ describe('WebAppRunner', function() {
         var server,
             opts = createOptions();
 
-        opts.connection = {
-            closed:false,
-            close:function() {
-                this.closed = true;
-            }
-        };
+        opts.connection = new MockConnection();
+        opts.connection.closed = false;
 
         server = new WebAppRunner( opts );
 
