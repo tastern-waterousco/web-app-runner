@@ -32,12 +32,12 @@ describe('WebAppRunner', function() {
     };
 
     var MockConnection = function() {
-        var con = this;
+        var conn = this;
 
         this.closed = true;
 
         this.close = function(cb) {
-            con.closed = true;
+            conn.closed = true;
 
             if (cb) {
                 cb();
@@ -51,7 +51,11 @@ describe('WebAppRunner', function() {
         };
 
         this.listen = function(port) {
-            return new MockConnection();
+            var conn = new MockConnection();
+
+            conn.closed = false;
+
+            return conn;
         };
     };
 
@@ -155,7 +159,17 @@ describe('WebAppRunner', function() {
             opts = createOptions();
 
         opts.app = new MockConnect();
+        server = new WebAppRunner( opts );
 
-        it('should create a mock app and start a mock server');
+        it('should start a mock server', function() {
+            should.not.exist( server.__protected().connection );
+
+            server.start();
+
+            var conn = server.__protected().connection;
+
+            should.exist( conn );
+            conn.closed.should.equal( false );
+        });
     });
 });
