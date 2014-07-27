@@ -5,18 +5,29 @@
 
 'use strict';
 
-var Logger = require('simple-node-logger' );
+var Logger = require('simple-node-logger' ),
+    port = 3005;
 
 module.exports.readConfig = function() {
     var config = {
         appkey:'d551900c-146a-11e4-aaa3-df58755e84a9',
         env:'staging',
-        port:3005,
+        port:port,
         daemon:true
     };
 
-    var file = [ process.env.HOME, '/logs/staging-', config.port, '.log' ].join('');
-    config.log = Logger.createSimpleFileLogger( file );
+    return config;
+};
+
+module.exports.readLoggerConfig = function() {
+    // define a rolling logger
+    var config = {
+        logDirectory: process.env.HOME + '/logs',
+        fileNamePattern:[ 'staging-', port, '-<DATE>.log' ].join(''),
+        dateFormat:'YYYY.MM.DD',
+        level:'info',
+        refresh:2 // re-read this config each minutes
+    };
 
     return config;
 };

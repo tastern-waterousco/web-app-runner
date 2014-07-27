@@ -19,7 +19,7 @@
     "lodash": "~2.4.1",
     "node-uuid": "~1.4.1",
     "serve-static": "^1.4.0",
-    "simple-node-logger": "^0.91.80"
+    "simple-node-logger": "^0.91.83"
   },
   "devDependencies": {
     "casual": "^1.4.5",
