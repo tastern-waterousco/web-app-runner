@@ -46,6 +46,10 @@ describe('WebAppRunner', function() {
                 cb();
             }
         };
+
+        this.on = function(type, fn) {
+            // simulate an event handler
+        };
     };
 
     var MockConnect = function() {
@@ -118,6 +122,7 @@ describe('WebAppRunner', function() {
                 'landingPageRouter',
                 'shutdown',
                 'stop',
+                'killme',
                 '__protected'
             ];
 
@@ -138,10 +143,14 @@ describe('WebAppRunner', function() {
 
     describe('#runInstance', function() {
         var server,
+            killed = false,
             opts = createOptions();
 
         opts.serviceRunner = new MockServiceRunner();
         server = new WebAppRunner( opts );
+        server.killme = function() {
+            killed = true;
+        };
 
         it('should create a child instance and write the pid to process file', function() {
             var child = server.__protected().runInstance();
@@ -152,7 +161,12 @@ describe('WebAppRunner', function() {
     });
 
     describe('shutdown', function() {
-        var server = new WebAppRunner( createOptions() );
+        var server = new WebAppRunner( createOptions() ),
+            killed = false;
+
+        server.killme = function() {
+            killed = true;
+        };
 
         it('should reject a shutdown request from non-local host ip', function(done) {
             var callback,
@@ -200,12 +214,16 @@ describe('WebAppRunner', function() {
 
     describe('stop', function() {
         var server,
+            killed = false,
             opts = createOptions();
 
         opts.connection = new MockConnection();
         opts.connection.closed = false;
 
         server = new WebAppRunner( opts );
+        server.killme = function() {
+            killed = true;
+        };
 
         it('should close an open connection', function() {
             server.stop();
@@ -236,10 +254,14 @@ describe('WebAppRunner', function() {
 
     describe('start', function() {
         var server,
+            killed = false,
             opts = createOptions();
 
         opts.app = new MockConnect();
         server = new WebAppRunner( opts );
+        server.killme = function() {
+            killed = true;
+        };
 
         it('should start a mock server', function() {
             should.not.exist( server.__protected().connection );
