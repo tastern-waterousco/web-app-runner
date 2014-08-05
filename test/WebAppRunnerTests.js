@@ -120,6 +120,7 @@ describe('WebAppRunner', function() {
                 'createApp',
                 'logger',
                 'landingPageRouter',
+                'statusPage',
                 'shutdown',
                 'stop',
                 'killme',

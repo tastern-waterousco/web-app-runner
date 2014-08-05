@@ -10,7 +10,6 @@
 * implement dynamic filter read capability
 * add status.js to read the process pid and report status?
 * add Logger to enable creating category logger
-* modify to use socket logger for multiple servers
 * implement agent filter
 
 ## Documentation
