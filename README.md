@@ -208,4 +208,4 @@ There are a number of simple and not so simple examples in the examples folder t
 There is also a more realistic production runner in the bin folder called bin/ that includes conf.js, start.js, status.js and stop.js scripts.
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.35</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.36</em></small></p>
