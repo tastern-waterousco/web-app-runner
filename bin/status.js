@@ -9,9 +9,9 @@ var conf = require( __dirname + '/conf' ),
     child;
 
 child = exec(command, function(err, stdout, stderr) {
-    console.log( JSON.parse( stdout, true, 2 ) );
-
     if (err) {
         console.log( 'error: ', err);
+    } else {
+        console.log( JSON.parse( stdout, true, 2 ) );
     }
 });
