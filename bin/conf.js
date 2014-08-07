@@ -26,7 +26,8 @@ module.exports.readLoggerConfig = function() {
         fileNamePattern:[ 'staging-', port, '-<DATE>.log' ].join(''),
         dateFormat:'YYYY.MM.DD',
         level:'info',
-        refresh:2 // re-read this config each minutes
+        loggerConfigFile: __dirname + '/logger-config.json',
+        refresh:120 * 1000 // re-read the config json file each 120 seconds
     };
 
     return config;
