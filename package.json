@@ -1,6 +1,6 @@
 {
   "name": "web-app-runner",
-  "version": "0.90.38",
+  "version": "0.90.39",
   "description": "A simple HTTP application server that accepts or rejects connections based on authenticated attributes including ip, user agent, etc.  The server can be used stand alone or as middleware for connect or express.",
   "main": "./index.js",
   "repository": {
@@ -34,6 +34,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-jsdoc": "^0.5.4",
     "grunt-mocha-test": "~0.8.1",
+    "grunt-nsp-package": "0.0.5",
     "jshint-stylish": "~0.1.3",
     "load-grunt-tasks": "~0.1.0",
     "mocha": "~1.16.2",
