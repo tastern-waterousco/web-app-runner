@@ -4,6 +4,7 @@
 A simple HTTP server targeted for single-page web applications.
 
 [![NPM version](https://badge.fury.io/js/web-app-runner.svg)](http://badge.fury.io/js/web-app-runner)
+[![Build Status](https://travis-ci.org/darrylwest/web-app-runner.svg?branch=master)](https://travis-ci.org/darrylwest/web-app-runner)
 
 ## Overview
 
