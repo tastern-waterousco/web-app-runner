@@ -1,11 +1,14 @@
 {
   "name": "web-app-runner",
-  "version": "0.90.39",
+  "version": "0.90.40",
   "description": "A simple HTTP application server that accepts or rejects connections based on authenticated attributes including ip, user agent, etc.  The server can be used stand alone or as middleware for connect or express.",
   "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/darrylwest/web-app-runner.git"
+  },
+  "scripts":{
+    "test":"grunt test"
   },
   "keywords": [
     "http",

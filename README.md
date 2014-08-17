@@ -3,6 +3,8 @@
 
 A simple HTTP server targeted for single-page web applications.
 
+[![NPM version](https://badge.fury.io/js/web-app-runner.svg)](http://badge.fury.io/js/web-app-runner)
+
 ## Overview
 
 Simple HTTP server that implements middleware for banning or re-routing authorized connections based on ip, agent or other requiest attributes. The server can be used stand alone or as middleware for connect or express.
@@ -208,4 +210,4 @@ There are a number of simple and not so simple examples in the examples folder t
 There is also a more realistic production runner in the bin folder called bin/ that includes conf.js, start.js, status.js and stop.js scripts.
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.39</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.40</em></small></p>
