@@ -5,6 +5,7 @@ A simple HTTP server targeted for single-page web applications.
 
 [![NPM version](https://badge.fury.io/js/web-app-runner.svg)](http://badge.fury.io/js/web-app-runner)
 [![Build Status](https://travis-ci.org/darrylwest/web-app-runner.svg?branch=master)](https://travis-ci.org/darrylwest/web-app-runner)
+[![Dependency Status](https://david-dm.org/darrylwest/web-app-runner.svg)](https://david-dm.org/darrylwest/web-app-runner)
 
 ## Overview
 
@@ -211,4 +212,4 @@ There are a number of simple and not so simple examples in the examples folder t
 There is also a more realistic production runner in the bin folder called bin/ that includes conf.js, start.js, status.js and stop.js scripts.
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.41</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.42</em></small></p>
