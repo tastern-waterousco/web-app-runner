@@ -8,7 +8,7 @@
     "url": "https://github.com/darrylwest/web-app-runner.git"
   },
   "scripts":{
-    "test":"grunt test"
+    "test":"grunt test validate-package"
   },
   "keywords": [
     "http",
@@ -18,12 +18,12 @@
     "static-gzip"
   ],
   "dependencies": {
-    "background-service-runner": "^0.90.16",
+    "background-service-runner": "^0.90.20",
     "connect": "^3.1.0",
     "lodash": "~2.4.1",
     "node-uuid": "~1.4.1",
     "serve-static": "^1.4.0",
-    "simple-node-logger": "^0.91.91"
+    "simple-node-logger": "^0.91.96"
   },
   "devDependencies": {
     "casual": "^1.4.5",
