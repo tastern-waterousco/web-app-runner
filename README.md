@@ -8,7 +8,7 @@ A simple HTTP server targeted for single-page web applications.
 
 ## Overview
 
-Simple HTTP server that implements middleware for banning or re-routing authorized connections based on ip, agent or other requiest attributes. The server can be used stand alone or as middleware for connect or express.
+Simple HTTP server that implements middleware for banning or re-routing authorized connections based on ip, agent or other request attributes. The server can be used stand alone or as middleware for connect or express.
 
 _NOTE: this server is designed to deliver simple HTML applications that connect to alternate services.  It has a bit more features when compared with http-server, but isn't intended to be a full REST-type back-end._
 
@@ -203,7 +203,7 @@ Tests are in place for all implemented methods. Tests are written in mocha/chai/
 There are a number of simple and not so simple examples in the examples folder that demonstrate how to run in development and production mode.  The examples include:
 
 * minimal-server.js - just the bare minimum to run a development server
-* basic-server.js - a bit more control over a specific envirnment
+* basic-server.js - a bit more control over a specific environment
 * ipfilter-server.js - demonstrates ip filtering
 * daemon-server.js - a background server done the hard way (see bin/start.js for the easy way)
 * start-page.js - a pre-loaded start page with redirect 
@@ -211,4 +211,4 @@ There are a number of simple and not so simple examples in the examples folder t
 There is also a more realistic production runner in the bin folder called bin/ that includes conf.js, start.js, status.js and stop.js scripts.
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.90.40</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.90.41</em></small></p>
