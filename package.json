@@ -1,6 +1,6 @@
 {
   "name": "web-app-runner",
-  "version": "0.90.45",
+  "version": "0.90.46",
   "description": "A simple HTTP application server that accepts or rejects connections based on authenticated attributes including ip, user agent, etc.  The server can be used stand alone or as middleware for connect or express.",
   "main": "./app/app.js",
   "repository": {
@@ -21,9 +21,9 @@
     "background-service-runner": "^0.90.20",
     "connect": "^3.3.3",
     "connect-gzip-static": "^1.0.0",
-    "lodash": "~2.4.1",
+    "lodash": "~3.0.0",
     "node-uuid": "~1.4.1",
-    "simple-node-logger": "^0.92.13"
+    "simple-node-logger": "^0.92.16"
   },
   "devDependencies": {
     "casual": "^1.4.5",
