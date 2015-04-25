@@ -202,7 +202,7 @@ describe('WebAppRunner', function() {
                 done();
             };
 
-            visitor.ip = '127.0.0.1';
+            visitor.ip = '::ffff:127.0.0.1';  // test for ip6
             visitor.url = '/shutdown';
             visitor.method = 'POST';
             request = new MockRequest( visitor );
