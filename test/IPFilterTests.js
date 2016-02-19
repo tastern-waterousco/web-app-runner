@@ -50,7 +50,7 @@ describe('IPFilter', function() {
         });
 
         it('should have all known methods by size and type', function() {
-            dash.methods( filter ).length.should.equal( methods.length );
+            dash.functions( filter ).length.should.equal( methods.length );
 
             methods.forEach(function(method) {
                 filter[ method ].should.be.a('function');

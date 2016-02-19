@@ -134,7 +134,7 @@ describe('WebAppRunner', function() {
         });
 
         it('should have all known methods by size and type', function() {
-            dash.methods( server ).length.should.equal( methods.length );
+            dash.functions( server ).length.should.equal( methods.length );
 
             methods.forEach(function(method) {
                 server[ method ].should.be.a('function');
