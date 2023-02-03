@@ -17,7 +17,7 @@
     "static-gzip"
   ],
   "dependencies": {
-    "background-service-runner": "^0.91.10",
+    "background-service-runner": "https://github.com/tastern-waterousco/background-service-runner.git",
     "connect": "^3.4.1",
     "connect-gzip-static": "^1.0.0",
     "lodash": "^4.5",
